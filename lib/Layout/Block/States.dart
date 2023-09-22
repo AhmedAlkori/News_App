@@ -13,3 +13,8 @@ class NewsGetBusinessErrorState extends NewsState{}
 class NewsGetSportsLoadingState extends NewsState{}
 class NewsGetSportsSuccessState extends NewsState{}
 class NewsGetSportsErrorState extends NewsState{}
+
+
+class NewsGetScienceLoadingState extends NewsState{}
+class NewsGetScienceSuccessState extends NewsState{}
+class NewsGetScienceErrorState extends NewsState{}
