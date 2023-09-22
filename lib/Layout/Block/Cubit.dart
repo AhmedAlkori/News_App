@@ -73,6 +73,7 @@ class NewsCubit extends Cubit<NewsState>
       'apiKey':'e628559e2ddb4665988c49859217ba1a'
     };
 
+
     DioHelper.getData(
         path: path,
         query: query
