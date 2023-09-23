@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../Moduls/Search/Search_Screen.dart';
+
 class HomeScreen extends StatelessWidget {
 
 
@@ -31,7 +33,10 @@ class HomeScreen extends StatelessWidget {
                   actions:
                   [
                     IconButton(
-                        onPressed: (){},
+                        onPressed: ()
+                        {
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchScreen()));
+                        },
                         icon: Icon(Icons.search)
                     ),
                     IconButton(

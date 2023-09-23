@@ -18,3 +18,7 @@ class NewsGetSportsErrorState extends NewsState{}
 class NewsGetScienceLoadingState extends NewsState{}
 class NewsGetScienceSuccessState extends NewsState{}
 class NewsGetScienceErrorState extends NewsState{}
+
+class NewsSearchLoadingState extends NewsState{}
+class NewsSearchSuccessState extends NewsState{}
+class NewsSearchErrorState extends NewsState{}

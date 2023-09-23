@@ -82,9 +82,9 @@ Widget NewsItem(context, dynamic model)=>InkWell(
                 children:
                 [
                   Icon(
-                    Icons.timer_outlined,
-                    size: 20,
-                    color: Colors.blueAccent,
+                    Icons.access_time,
+                    size: 18,
+                    color: Colors.grey[600],
                   ),
                   SizedBox(
                     width: 5,
