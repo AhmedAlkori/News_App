@@ -1,3 +1,4 @@
+import 'package:final_news_app/Moduls/WebView/Web_Screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
@@ -27,12 +28,18 @@ Widget LoadingList(context)=>ListView.separated(
 
 
 
-
+Widget MyDivider()=>Padding(
+  padding: const EdgeInsets.all(8.0),
+  child: Container(
+    color: Colors.grey,
+    width: double.infinity,
+    height: 2,
+  ),
+);
 Widget NewsItem(context, dynamic model)=>InkWell(
   onTap: ()
   {
-    print(model['urlToImage']);
-    print('Ahmed');
+   Navigator.push(context, MaterialPageRoute(builder: (context)=>WebScreen(model['url'])));
   },
   child: Container(
 
