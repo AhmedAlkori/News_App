@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+
 import '../../Shared/Components/components.dart';
 
 class BusinessScreen extends StatelessWidget {
@@ -25,7 +26,7 @@ class BusinessScreen extends StatelessWidget {
               child: ConditionalBuilder(
                   condition: cubit.businessList.length >0,
                   builder: (context)=>NewsList(context,cubit.businessList),
-                  fallback: (context)=>Center(child: CircularProgressIndicator()))
+                  fallback: (context)=>LoadingList(context))
             );
           },
 
@@ -38,3 +39,5 @@ class BusinessScreen extends StatelessWidget {
 
 
 }
+
+
