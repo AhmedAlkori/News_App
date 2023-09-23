@@ -64,7 +64,7 @@ class NewsCubit extends Cubit<NewsState>
   List<dynamic> businessList=[];
   List<dynamic> sportsList=[];
   List<dynamic> scienceList=[];
-
+  List<dynamic> searchList=[];
 
   void getBusiness()
   {
@@ -144,6 +144,34 @@ class NewsCubit extends Cubit<NewsState>
     {
       print('error when get science  ${error.toString()}');
       emit(NewsGetScienceErrorState());
+    });
+  }
+
+  void getSearch({
+    required String data,
+})
+  {
+    emit(NewsSearchLoadingState());
+    String path='v2/everything';
+    Map<String,dynamic> query={
+      'q':'${data}',
+      'apiKey':'e628559e2ddb4665988c49859217ba1a'
+    };
+
+
+    DioHelper.getData(
+        path: path,
+        query: query
+    )
+        .then((value)
+    {
+      searchList=value.data['articles'];
+      emit(NewsSearchSuccessState());
+
+    }).catchError((error)
+    {
+      print('error when get search  ${error.toString()}');
+      emit(NewsSearchErrorState());
     });
   }
 
