@@ -57,6 +57,7 @@ class HomeScreen extends StatelessWidget {
                   type: BottomNavigationBarType.fixed,
                   onTap: (index)
                   {
+                    print(index);
                     cubit.changeBottomNavIndex(index);
                   },
                   items:
@@ -72,6 +73,10 @@ class HomeScreen extends StatelessWidget {
                     BottomNavigationBarItem(
                       icon: Icon(Icons.science_outlined),
                       label: 'صحة',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.settings),
+                      label: 'اعدادات',
                     ),
                   ],
                 ),

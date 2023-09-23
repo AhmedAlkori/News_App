@@ -9,6 +9,8 @@ import 'package:final_news_app/Shared/Network/Dio_Helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../Moduls/Settings/Setting_Screen.dart';
+
 class NewsCubit extends Cubit<NewsState>
 {
   NewsCubit(): super(NewsInitState());
@@ -20,6 +22,7 @@ class NewsCubit extends Cubit<NewsState>
     BusinessScreen(),
     SportScreen(),
     ScienceScreen(),
+    SettingScreen(),
   ];
   int currentIndex=0;
   bool isDark=false;
@@ -175,4 +178,26 @@ class NewsCubit extends Cubit<NewsState>
     });
   }
 
+   var selectedVal;
+  int valueIndex=0;
+  void changeStatueType({
+    required var value,
+  })
+  {
+    selectedVal=value;
+    if (value.toString().length > 6)
+    {
+      valueIndex=2;
+    }
+    else
+    {
+      valueIndex=1;
+    }
+    emit(NewsChangeDropItemState());
+  }
+
+  void initValIndex()
+  {
+    valueIndex=0;
+  }
 }
