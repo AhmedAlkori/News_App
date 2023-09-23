@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 Widget NewsList(context,List<dynamic> myList)=>ListView.separated(
     physics: BouncingScrollPhysics(),
@@ -13,6 +14,18 @@ Widget NewsList(context,List<dynamic> myList)=>ListView.separated(
       ),
     ),
     itemCount: myList.length);
+
+Widget LoadingList(context)=>ListView.separated(
+  physics: BouncingScrollPhysics(),
+    itemBuilder: (context,index)=>getShimmerLoading(context),
+    separatorBuilder: (context,index)=>SizedBox(height: 15,),
+    itemCount: 8,
+);
+
+
+
+
+
 
 
 Widget NewsItem(context, dynamic model)=>InkWell(
@@ -90,3 +103,88 @@ Widget NewsItem(context, dynamic model)=>InkWell(
     ),
   ),
 );
+
+
+Shimmer getShimmerLoading(context)
+{
+  return Shimmer.fromColors(
+    baseColor: Colors.grey[300]!,
+    highlightColor: Colors.grey[100]!,
+    child: Container(
+      height: 100,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: 100.0,
+            height: 100.0,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadiusDirectional.circular(8),
+            ),
+
+          ),
+
+          const SizedBox(
+            width: 10,
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                const SizedBox(
+                  height: 8,
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 16.0,
+                  color: Colors.white,
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 16.0,
+                  color: Colors.white,
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 16.0,
+                  color: Colors.white,
+                ),
+
+                Spacer(),
+                Row(
+                  children:
+                  [
+                    CircleAvatar(
+                      backgroundColor: Colors.white,
+                      radius:8,
+
+                    ),
+
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: Container(
+                        // width: double.infinity,
+                        height: 10.0,
+                        color: Colors.white,
+                      ),
+                    ),
+
+                  ],
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    ),
+  );
+}

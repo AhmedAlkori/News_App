@@ -25,7 +25,7 @@ class ScienceScreen extends StatelessWidget {
                   child: ConditionalBuilder(
                       condition: cubit.scienceList.length >0,
                       builder: (context)=>NewsList(context,cubit.scienceList),
-                      fallback: (context)=>Center(child: CircularProgressIndicator()))
+                      fallback: (context)=>LoadingList(context))
               );
             },
 

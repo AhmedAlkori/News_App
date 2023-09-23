@@ -26,7 +26,7 @@ class SportScreen extends StatelessWidget {
                   child: ConditionalBuilder(
                       condition: cubit.sportsList.length >0,
                       builder: (context)=>NewsList(context,cubit.sportsList),
-                      fallback: (context)=>Center(child: CircularProgressIndicator()))
+                      fallback: (context)=>LoadingList(context))
               );
             },
 
