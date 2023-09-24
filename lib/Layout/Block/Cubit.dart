@@ -10,6 +10,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../Moduls/Settings/Setting_Screen.dart';
+import '../../Shared/Components/constens.dart';
 
 class NewsCubit extends Cubit<NewsState>
 {
@@ -71,10 +72,11 @@ class NewsCubit extends Cubit<NewsState>
 
   void getBusiness()
   {
+    businessList.clear();
     emit(NewsGetBusinessLoadingState());
     String path='v2/top-headlines';
     Map<String,dynamic> query={
-      'country':'us',
+      'country':LangType,
       'category':'business',
       'apiKey':'e628559e2ddb4665988c49859217ba1a'
     };
@@ -98,10 +100,11 @@ class NewsCubit extends Cubit<NewsState>
 
   void getSports()
   {
+    sportsList.clear();
     emit(NewsGetSportsLoadingState());
     String path='v2/top-headlines';
     Map<String,dynamic> query={
-      'country':'us',
+      'country':LangType,
       'category':'sports',
       'apiKey':'e628559e2ddb4665988c49859217ba1a'
     };
@@ -125,10 +128,11 @@ class NewsCubit extends Cubit<NewsState>
 
   void getScience()
   {
+    scienceList.clear();
     emit(NewsGetScienceLoadingState());
     String path='v2/top-headlines';
     Map<String,dynamic> query={
-      'country':'us',
+      'country':LangType,
       'category':'science',
       'apiKey':'e628559e2ddb4665988c49859217ba1a'
     };
@@ -199,5 +203,21 @@ class NewsCubit extends Cubit<NewsState>
   void initValIndex()
   {
     valueIndex=0;
+  }
+
+
+  void saveLangType({
+    required String lang,
+})
+  {
+    CashHelper.saveCash(key: 'lang', value: lang)
+        .then((value)
+    {
+      emit(NewsSaveLangSuccessState(lang));
+    }).catchError((error)
+    {
+      print('error when save lang ${error.toString()}');
+      emit(NewsSaveLangErrorState());
+    });
   }
 }

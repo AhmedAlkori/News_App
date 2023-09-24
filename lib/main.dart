@@ -3,6 +3,7 @@
 import 'package:final_news_app/Layout/Block/Cubit.dart';
 import 'package:final_news_app/Layout/Block/States.dart';
 import 'package:final_news_app/Layout/Home_Screen.dart';
+import 'package:final_news_app/Shared/Components/constens.dart';
 import 'package:final_news_app/Shared/Network/Dio_Helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,6 +21,12 @@ void main() async {
   Bloc.observer=MyBlocObserver();
   await CashHelper.initPreference();
   DioHelper.initDio();
+  var lng=CashHelper.getCash(key: 'lang');
+  if(lng != null)
+    {
+      LangType=lng;
+    }
+  else{}
   runApp( MyApp());
 
 

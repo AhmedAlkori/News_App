@@ -24,3 +24,11 @@ class NewsSearchSuccessState extends NewsState{}
 class NewsSearchErrorState extends NewsState{}
 
 class NewsChangeDropItemState extends NewsState{}
+
+
+class NewsSaveLangSuccessState extends NewsState
+{
+  final lang;
+  NewsSaveLangSuccessState(this .lang);
+}
+class NewsSaveLangErrorState extends NewsState{}
