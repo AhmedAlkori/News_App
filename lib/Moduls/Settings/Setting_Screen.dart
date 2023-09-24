@@ -1,5 +1,6 @@
 import 'package:final_news_app/Layout/Block/Cubit.dart';
 import 'package:final_news_app/Layout/Block/States.dart';
+import 'package:final_news_app/Shared/Components/constens.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +17,24 @@ class SettingScreen extends StatelessWidget {
       {
         NewsCubit.get(context).initValIndex();
         return BlocConsumer<NewsCubit,NewsState>(
-          listener: (context,state){},
+          listener: (context,state)
+          {
+            if(state is NewsSaveLangSuccessState)
+              {
+                LangType=state.lang;
+                print(state.lang);
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(
+                  'تم الحفظ بنجاح',
+                )));
+              //  Navigator.pop(context);
+              }
+            else if(state is NewsSaveLangErrorState)
+              {
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(
+                  'error when change language!',
+                )));
+              }
+          },
           builder: (context,state)
           {
             NewsCubit cubit=NewsCubit.get(context);
@@ -80,7 +98,16 @@ class SettingScreen extends StatelessWidget {
                     elevation: 0.0,
                     onPressed: ()
                     {
+                      print(cubit.selectedVal);
+                      if(cubit.selectedVal.toString().length > 8)
+                        {
 
+                          cubit.saveLangType(lang: 'us');
+                        }
+                      else
+                        {
+                          cubit.saveLangType(lang: 'eg');
+                        }
                     },
                     child: Text(
                       'حفظ ',
