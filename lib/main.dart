@@ -11,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 import 'Layout/Block/Block_Observer/blockObserver.dart';
+import 'Moduls/Splash/Home_Splash_Screen.dart';
 import 'Shared/Local/Cash_Helper.dart';
 
 
@@ -130,7 +131,7 @@ class MyApp extends StatelessWidget {
 
               ),
               themeMode: NewsCubit.get(context).isDark! ? ThemeMode.dark:ThemeMode.light,
-              home: HomeScreen(),
+              home: HomeSplashScreen(),
             ),
           );
         },
