@@ -285,3 +285,64 @@ Shimmer getShimmerLoading(context)
     ),
   );
 }
+
+
+
+Widget desktopItem(List<dynamic> ls,context)=>Row(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  mainAxisSize: MainAxisSize.max,
+  children:
+  [
+    Expanded(
+      child: Container(
+        // width: 500,
+
+          child: NewsList(context, ls)),
+    ),
+    Expanded(
+
+      child: Container(
+        color: Colors.grey[300],
+        padding: EdgeInsets.all(8),
+        height: double.infinity,
+        child: Text(
+          '${ls[NewsCubit.get(context).hoverIndex]['title']}',
+          style: TextStyle(
+            fontFamily: 'AlamirBold',
+          ),
+        ),
+
+      ),
+    ),
+  ],
+);
+
+Widget desktopLoadingItem(context)=>Row(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  mainAxisSize: MainAxisSize.max,
+  children:
+  [
+    Expanded(
+      child: Container(
+        // width: 500,
+
+        child: LoadingList(context),
+      ),
+    ),
+    Expanded(
+
+      child: Container(
+        color: Colors.grey[300],
+        padding: EdgeInsets.all(8),
+        height: double.infinity,
+        child: Text(
+          '',
+          style: TextStyle(
+            fontFamily: 'AlamirBold',
+          ),
+        ),
+
+      ),
+    ),
+  ],
+);
