@@ -32,7 +32,7 @@ class BusinessScreen extends StatelessWidget {
                 desktop: (context)=> ConditionalBuilder(
                     condition: cubit.businessList.length >0,
                     builder: (context)=>desktopItem(cubit.businessList,context),
-                    fallback: (context)=>Center(child: CircularProgressIndicator())),
+                    fallback: (context)=>desktopLoadingItem(context)),
                 breakpoints: ScreenBreakpoints(
                   desktop: 600,
                  tablet: 300,
@@ -47,34 +47,9 @@ class BusinessScreen extends StatelessWidget {
   }
 
 
-Widget desktopItem(List<dynamic> ls,context)=>Row(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  mainAxisSize: MainAxisSize.max,
-  children:
-  [
-    Expanded(
-      child: Container(
-       // width: 500,
 
-          child: NewsList(context, ls)),
-    ),
-    Expanded(
 
-      child: Container(
-        color: Colors.grey[300],
-        padding: EdgeInsets.all(8),
-        height: double.infinity,
-        child: Text(
-          '${ls[NewsCubit.get(context).hoverIndex]['title']}',
-          style: TextStyle(
-            fontFamily: 'AlamirBold',
-          ),
-        ),
 
-      ),
-    ),
-  ],
-);
 
 
 }
