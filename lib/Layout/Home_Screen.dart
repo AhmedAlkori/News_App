@@ -4,6 +4,8 @@ import 'package:final_news_app/Moduls/Business/Business_Screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 import '../Moduls/Search/Search_Screen.dart';
 
@@ -22,12 +24,12 @@ class HomeScreen extends StatelessWidget {
             NewsCubit cubit=NewsCubit.get(context);
             return Directionality(
               textDirection: TextDirection.rtl,
-              child: Scaffold(
+              child:Scaffold(
                 appBar: AppBar(
                   title: Text(
-                      'أخبار نيوز',
+                    'أخبار نيوز',
                     style: TextStyle(
-                      fontFamily: 'AlamirBold'
+                        fontFamily: 'AlamirBold'
                     ),
                   ),
                   actions:
@@ -52,6 +54,7 @@ class HomeScreen extends StatelessWidget {
                   padding: EdgeInsets.all(8.0),
                   child: cubit.Screens[cubit.currentIndex],
                 ),
+
                 bottomNavigationBar: BottomNavigationBar(
                   currentIndex: cubit.currentIndex,
                   type: BottomNavigationBarType.fixed,

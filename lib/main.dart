@@ -1,5 +1,10 @@
 
 
+
+
+import 'dart:io';
+
+import 'package:desktop_window/desktop_window.dart';
 import 'package:final_news_app/Layout/Block/Cubit.dart';
 import 'package:final_news_app/Layout/Block/States.dart';
 import 'package:final_news_app/Layout/Home_Screen.dart';
@@ -20,9 +25,16 @@ void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer=MyBlocObserver();
+  if(Platform.isWindows)
+    {
+      await DesktopWindow.setMinWindowSize(Size(350,650));
+      await DesktopWindow.setMaxWindowSize(Size.infinite);
+    }
+
   await CashHelper.initPreference();
   DioHelper.initDio();
   var lng=CashHelper.getCash(key: 'lang');
+
   if(lng != null)
     {
       LangType=lng;

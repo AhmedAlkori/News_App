@@ -33,6 +33,18 @@ class NewsCubit extends Cubit<NewsState>
     currentIndex=index;
     emit(NewsChangeBottomNavIndexState());
   }
+
+  int hoverIndex=0;
+
+  void  changeHoverColor({
+    required int index
+})
+  {
+    hoverIndex=index;
+    emit(NewsChangeHoverColorState());
+  }
+
+
   void getMode()
   {
     var getDarkMode=CashHelper.getCash(key: 'isDark');

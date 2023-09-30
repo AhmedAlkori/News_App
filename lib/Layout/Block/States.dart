@@ -32,3 +32,5 @@ class NewsSaveLangSuccessState extends NewsState
   NewsSaveLangSuccessState(this .lang);
 }
 class NewsSaveLangErrorState extends NewsState{}
+
+class NewsChangeHoverColorState extends NewsState{}
